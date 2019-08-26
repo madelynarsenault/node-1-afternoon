@@ -5,8 +5,8 @@ const products = require('../products.json');
 
 const getProducts= (req, res) => {
     if(req.query.price){
-    const item = products.find(val => val.id === parseInt(req.params.id));
-        return res.status(500).send("Item not in list");
+    const item = products.filter(val => val.price >= parseInt(req.query.price));
+        return res.status(200).send(items);
     }
     res.status(200).send(products);
 };
